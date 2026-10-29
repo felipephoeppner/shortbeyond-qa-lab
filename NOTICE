@@ -1,8 +1,14 @@
-ShortBeyond QA Lab — Felipe Hoeppner
+ShortBeyond QA Lab — contribuições de Felipe Hoeppner
 
-Este repositório contém automação e material de estudo reorganizado a partir
-do laboratório local do autor. A aplicação ShortBeyond, distribuída por
-beyondtest, não foi desenvolvida neste repositório.
+Laboratório de estudo baseado no projeto ShortBeyond e nos exercícios do
+curso Playwright Além da Interface, ministrado por Fernando Papito na Udemy.
+Os créditos do material de origem pertencem aos respectivos autores.
 
-Imagens Docker e dependências npm mantêm suas próprias licenças.
+A aplicação ShortBeyond e a imagem Docker beyondtest/shortb-api não foram
+desenvolvidas por Felipe Hoeppner. Suas contribuições neste repositório
+incluem organização, adaptações dos exercícios e documentação dos estudos.
+
+A licença ISC do repositório se aplica às contribuições de seu autor.
+Materiais do curso, imagens Docker e dependências de terceiros mantêm suas
+próprias condições de uso; este aviso não concede direitos sobre eles.
 Consulte docs/references.md e examples/README.md para origem e contexto.

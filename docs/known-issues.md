@@ -26,7 +26,7 @@ Reavalie com `npm audit` ao atualizar as ferramentas; contagens podem mudar com 
 
 ## Limites das evidências
 
-- A pipeline foi preparada, mas ainda não foi executada no GitHub.
+- A pipeline de API foi executada com sucesso em 29/10/2026, no commit `0783ba2`: [execução no GitHub](https://github.com/felipephoeppner/shortbeyond-qa-lab/actions/runs/40896231107). Esse resultado inclui a falha esperada BUG-001 e não valida performance nem garante o resultado de commits posteriores.
 - O smoke valida os fluxos de performance com uma execução de cada cenário; não estabelece capacidade ou SLO.
 - Métricas locais dependem do computador e da concorrência com outros processos.
 - A limpeza por teste depende de uma conexão ao banco e pode deixar resíduos se o processo for encerrado abruptamente.

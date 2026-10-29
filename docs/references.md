@@ -2,7 +2,9 @@
 
 ## Origem do material
 
-Este laboratório foi reorganizado a partir dos exercícios e scripts presentes no projeto local de Felipe Hoeppner. Os exemplos anteriores foram preservados para comparação. A automação utiliza a aplicação ShortBeyond distribuída no namespace Docker `beyondtest`.
+Este laboratório tem como base o projeto ShortBeyond e os exercícios do curso **Playwright Além da Interface**, ministrado por **Fernando Papito**, na **Udemy**. Os exemplos anteriores foram preservados para comparação. A aplicação ShortBeyond e a imagem Docker `beyondtest/shortb-api` são materiais de terceiros, não desenvolvidos por Felipe Hoeppner.
+
+As contribuições de Felipe neste laboratório incluem a organização para consulta, adaptações dos exercícios e documentação das execuções e aprendizados. O repositório não representa uma implementação integralmente criada do zero.
 
 As imagens de aplicação e ferramentas são dependências externas. Sua inclusão no Compose não transfere autoria nem altera suas licenças.
 
@@ -10,7 +12,10 @@ As imagens de aplicação e ferramentas são dependências externas. Sua inclus�
 - [PostgreSQL](https://www.postgresql.org/)
 - [Adminer](https://www.adminer.org/)
 
-Não foi fornecido um endereço específico de curso ou repositório-fonte para os exercícios. Acrescente essa referência quando disponível, para dar o crédito correspondente.
+- Curso de origem: **Playwright Além da Interface — Fernando Papito / Udemy**.
+- [Certificado de conclusão de Felipe Hoeppner](https://ude.my/UC-5288234f-b64d-486e-b9c6-c13458930035).
+
+O certificado identifica a formação concluída; não substitui o material original do curso.
 
 ## Documentação técnica
 

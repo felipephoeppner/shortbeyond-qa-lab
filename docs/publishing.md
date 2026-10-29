@@ -1,6 +1,8 @@
-# Publicar no GitHub
+# Publicação e manutenção no GitHub
 
-Este diretório é um repositório Git independente. A publicação remota ainda não foi feita.
+Este projeto está publicado em [felipephoeppner/shortbeyond-qa-lab](https://github.com/felipephoeppner/shortbeyond-qa-lab). A suíte de API foi [executada com sucesso em 29/10/2026](https://github.com/felipephoeppner/shortbeyond-qa-lab/actions/runs/40896231107), no commit `0783ba2`.
+
+Para atualizar este repositório, consulte **Atualizações futuras** ao final. As instruções de primeiro envio abaixo são referência para quem quiser publicar uma cópia em sua própria conta; não é necessário recriar o repositório existente nem adicionar novamente o remoto `origin`.
 
 ## Identidade e apresentação
 
@@ -12,7 +14,7 @@ Topics sugeridos: `qa`, `api-testing`, `playwright`, `artillery`, `performance-t
 
 O [README de perfil preservado](reference/profile-readme.md) pode ajudar a compor sua apresentação profissional. Revise suas informações e datas antes de usá-lo no repositório especial do perfil.
 
-## Antes do primeiro envio
+## Antes de enviar alterações
 
 ```bash
 git status --short
@@ -28,7 +30,7 @@ git config user.name "Seu nome profissional"
 git config user.email "Seu e-mail profissional ou endereço noreply do GitHub"
 ```
 
-## Primeiro commit
+## Primeiro commit de uma cópia independente
 
 ```bash
 git add .
@@ -39,7 +41,7 @@ git commit -m "docs: organiza laboratório de QA com testes e guias"
 
 A raiz contém um `.gitignore` que exclui ambiente local, dependências e relatórios. A massa CSV é fictícia e faz parte do projeto.
 
-## Criar o destino
+## Criar o destino de uma cópia independente
 
 No GitHub, crie um repositório público chamado `shortbeyond-qa-lab`, inicialmente vazio, sem gerar outro README ou licença. Copie a URL SSH ou HTTPS mostrada pelo GitHub.
 
@@ -55,7 +57,7 @@ A autenticação é feita pelo GitHub/gerenciador de credenciais. Não coloque t
 ## Depois de publicar
 
 1. Confira se a página inicial mostra o README.
-2. Abra Actions e acompanhe a primeira execução de Testes de API.
+2. Abra Actions e acompanhe a execução de Testes de API referente ao commit enviado.
 3. Confira se o relatório ficou disponível como artefato.
 4. Preencha descrição e topics.
 5. Fixe o repositório no seu perfil e adicione um link no README profissional.

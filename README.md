@@ -80,7 +80,7 @@ O Compose usa o projeto `shortbeyond-qa-lab` e um volume próprio. As portas for
 - Dados exclusivos por teste e limpeza das contas criadas.
 - Importação direta de CSV com bcrypt, transação e tratamento de duplicidade.
 - Carga constante, pico e recuperação com Artillery.
-- Registro de problemas conhecidos e execução de API preparada para GitHub Actions.
+- Registro de problemas conhecidos e execução de API no GitHub Actions.
 
 São **20 testes funcionais**. Um deles registra uma divergência conhecida: a imagem beta responde 400 onde o teste espera 404 para um link inexistente. Ele está marcado como falha esperada, com justificativa em [BUG-001](docs/known-issues.md). Uma correção da aplicação provoca uma aprovação inesperada e exige revisar essa marcação.
 
@@ -96,13 +96,13 @@ data/users.csv         2.000 usuários fictícios, sem cabeçalho
 scripts/               Geração, importação, limpeza e execução
 docs/                  Guias, decisões, estudos e evidências
 examples/              Exemplos anteriores preservados para comparação
-.github/workflows/     Automação preparada para o GitHub
+.github/workflows/     Automação de testes no GitHub Actions
 reports/               Resultados locais, ignorados pelo Git
 ```
 
 ## Resultados e manutenção
 
-Consulte a [evidência de validação local](docs/evidence/local-validation.md) para saber o que foi executado e suas limitações. A automação do GitHub precisa ser executada após publicar o repositório; não há badge de CI sem execução real.
+Consulte a [evidência de validação local](docs/evidence/local-validation.md) para saber o que foi executado e suas limitações. A execução de API no GitHub Actions foi concluída com sucesso em **29/10/2026**, no commit `0783ba2`: [consultar execução](https://github.com/felipephoeppner/shortbeyond-qa-lab/actions/runs/40896231107). Ela validou instalação, estrutura, ambiente Docker e testes de API, com a falha esperada descrita em BUG-001. Os testes de performance não fazem parte desse workflow. O relatório gerado tem retenção de sete dias; novas alterações devem ser acompanhadas na aba Actions.
 
 As dependências diretas e as imagens principais têm versões fixadas. Antes de atualizar, execute os testes e registre as mudanças. Alertas conhecidos de dependências estão em [limitações](docs/known-issues.md).
 

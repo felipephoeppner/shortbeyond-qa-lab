@@ -59,7 +59,7 @@ O relatório HTML do Playwright e os JSONs do Artillery ficam em reports/, fora 
 
 ## Limitações
 
-O teste de pico completo de 100 segundos não foi executado nesta reorganização. O smoke confirma os fluxos e os caminhos; não mede capacidade. A pipeline do GitHub ainda não foi executada remotamente. Alertas de dependências estão registrados em [problemas conhecidos](../known-issues.md).
+O teste de pico completo de 100 segundos não foi executado nesta reorganização. O smoke confirma os fluxos e os caminhos; não mede capacidade. Na data desta validação local, a pipeline ainda não havia sido executada remotamente. Atualização de 29/10/2026: a [execução no GitHub](https://github.com/felipephoeppner/shortbeyond-qa-lab/actions/runs/40896231107) passou no commit `0783ba2`, incluindo instalação, validação da estrutura, ambiente Docker e testes de API. Performance não foi executada nesse workflow. Alertas de dependências estão registrados em [problemas conhecidos](../known-issues.md).
 
 O seed alternativo pela API foi preservado e teve sua estrutura validada; os 2.000 registros desta verificação foram inseridos pelo PostgreSQL.
 
