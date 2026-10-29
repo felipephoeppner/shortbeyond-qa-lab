@@ -1,6 +1,21 @@
 # ShortBeyond QA Lab
+## Origem do projeto e créditos
 
-Laboratório de **testes de API e performance** mantido por Felipe Hoeppner. Reúne cenários executáveis, preparação de dados e notas de estudo para consulta e portfólio.
+Este laboratório é baseado no projeto **ShortBeyond**, apresentado no curso **Playwright Além da Interface**, ministrado por **Fernando Papito**, na Udemy.
+
+A aplicação utilizada nos testes e a imagem Docker disponibilizada pelo curso **não são de minha autoria**. Os créditos desses materiais pertencem aos respectivos autores. Os exemplos e exercícios do curso serviram como base para este estudo.
+
+Minha contribuição neste repositório está na organização do material para consulta, nas adaptações realizadas durante o aprendizado e na documentação das execuções e dos aprendizados. Não apresento o projeto como uma implementação integralmente criada por mim.
+
+O objetivo é registrar minha evolução em testes de APIs e performance e compartilhar a aplicação prática do conhecimento adquirido no curso.
+
+**Referências:**
+
+- Curso: **Playwright Além da Interface — Fernando Papito / Udemy**
+- [Meu certificado de conclusão](https://ude.my/UC-5288234f-b64d-486e-b9c6-c13458930035)
+- Imagem Docker utilizada: `beyondtest/shortb-api`
+
+Laboratório de **testes de API e performance**. Reúne cenários executáveis, preparação de dados e notas de estudo para consulta e portfólio.
 
 **Stack:** JavaScript (ES modules), Playwright, Artillery, PostgreSQL e Docker Compose.
 
