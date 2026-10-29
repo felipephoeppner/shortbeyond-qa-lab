@@ -1,0 +1,32 @@
+config:
+  target: http://127.0.0.1:3433/api
+  payload:
+    path: ../data/users.csv
+    fields: [name, email, password]
+    loadAll: true
+    name: usuarios
+  phases:
+    - duration: 1
+      arrivalCount: 1
+  plugins:
+    expect:
+      reportFailuresAsErrors: true
+      outputFormat: prettyError
+  defaults:
+    headers:
+      Content-Type: application/json
+
+scenarios:
+  - name: Cadastro de todo o CSV pela API
+    flow:
+      - loop:
+          - post:
+              url: /auth/register
+              json:
+                name: "{{ $loopElement.name }}"
+                email: "{{ $loopElement.email }}"
+                password: "{{ $loopElement.password }}"
+              expect:
+                - statusCode: 201
+                - hasProperty: user.id
+        over: usuarios

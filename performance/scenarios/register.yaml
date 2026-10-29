@@ -1,0 +1,51 @@
+config:
+  target: http://127.0.0.1:3433/api
+  phases:
+    - name: cadastros
+      duration: 45
+      arrivalRate: 3
+  plugins:
+    expect:
+      reportFailuresAsErrors: true
+      outputFormat: prettyError
+  defaults:
+    headers:
+      Content-Type: application/json
+
+# Prepara a conta de duplicidade antes de iniciar a carga.
+before:
+  flow:
+    - post:
+        url: /auth/register
+        json:
+          name: Usuario Duplicado
+          email: duplicado@load.example.test
+          password: senha123
+        expect:
+          - statusCode: [201, 400]
+scenarios:
+  - name: Cadastro com sucesso
+    weight: 80
+    flow:
+      - post:
+          url: /auth/register
+          json:
+            name: Usuario Performance
+            email: "load-{{ $uuid }}@load.example.test"
+            password: senha123
+          expect:
+            - statusCode: 201
+            - hasProperty: user.id
+            - jmespath: "message == 'Usuário cadastrado com sucesso!'"
+  - name: Email duplicado
+    weight: 20
+    flow:
+      - post:
+          url: /auth/register
+          json:
+            name: Usuario Duplicado
+            email: duplicado@load.example.test
+            password: senha123
+          expect:
+            - statusCode: 400
+            - jmespath: "message == 'Este e-mail já está em uso. Por favor, tente outro.'"

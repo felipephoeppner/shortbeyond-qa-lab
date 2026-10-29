@@ -1,0 +1,41 @@
+name: shortbeyond-qa-lab
+services:
+  db:
+    image: postgres:15@sha256:baa22e6286bf832cb147b8bb5aa9d8bc999846d69c21d11bf63f58fbeed1fa48
+    environment:
+      POSTGRES_USER: ${DB_USER:-dba}
+      POSTGRES_PASSWORD: ${DB_PWD:-dba}
+      POSTGRES_DB: ${DB_NAME:-ShortDB}
+      TZ: America/Sao_Paulo
+    ports:
+      - "127.0.0.1:${DB_PORT:-55432}:5432"
+    volumes:
+      - lab_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 2s
+      timeout: 5s
+      retries: 30
+  api:
+    image: beyondtest/shortb-api:beta@sha256:902d1b7f3718958a3578263541cbd1f3d64f914572a804ab02bfe220a085ba2c
+    environment:
+      PORT: "3333"
+      DATABASE_URL: postgres://${DB_USER:-dba}:${DB_PWD:-dba}@db:5432/${DB_NAME:-ShortDB}?sslmode=disable
+      JWT_SECRET: ${JWT_SECRET:-shortbeyond-lab-local-only}
+    ports:
+      - "127.0.0.1:${API_PORT:-3433}:3333"
+    depends_on:
+      db:
+        condition: service_healthy
+  adminer:
+    image: adminer@sha256:9cae9051dd7e622395bf8216ca50e4bb69976fed293c277edc891469729a56b3
+    profiles: ["tools"]
+    environment:
+      ADMINER_DEFAULT_SERVER: db
+    ports:
+      - "127.0.0.1:${ADMINER_PORT:-8180}:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+volumes:
+  lab_postgres_data:

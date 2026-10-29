@@ -1,0 +1,45 @@
+{
+  "name": "shortbeyond-qa-lab",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Laboratório de testes de API e performance com Playwright, Artillery e PostgreSQL.",
+  "type": "module",
+  "author": "Felipe Hoeppner",
+  "license": "ISC",
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "scripts": {
+    "setup": "node scripts/setup.js",
+    "env:up": "docker compose up -d --wait db api",
+    "env:down": "docker compose down",
+    "env:adminer": "docker compose --profile tools up -d adminer",
+    "env:logs": "docker compose logs --tail=100 api",
+    "test": "npm run test:api",
+    "test:api": "playwright test",
+    "test:api:list": "playwright test --list",
+    "test:report": "playwright show-report reports/playwright",
+    "data:generate": "node scripts/generate-users.js",
+    "db:seed": "node scripts/seed-users.js",
+    "db:cleanup": "node scripts/cleanup-users.js",
+    "test:performance:health": "node scripts/run-performance.js health",
+    "test:performance:register": "node scripts/run-performance.js register",
+    "test:performance:login": "node scripts/run-performance.js login",
+    "test:performance:spike": "node scripts/run-performance.js spike",
+    "test:performance:smoke": "node scripts/run-performance.js smoke",
+    "db:seed:api": "node scripts/run-performance.js seed",
+    "check": "node scripts/check-project.js"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "10.6.0",
+    "@playwright/test": "1.60.0",
+    "artillery": "2.0.34",
+    "yaml": "2.9.1"
+  },
+  "dependencies": {
+    "bcryptjs": "3.0.3",
+    "csv-parse": "7.0.3",
+    "dotenv": "17.4.2",
+    "pg": "8.21.0"
+  }
+}

@@ -1,0 +1,22 @@
+config:
+  target: http://127.0.0.1:3433
+  phases:
+    - name: health
+      duration: 30
+      arrivalRate: 5
+  plugins:
+    expect:
+      reportFailuresAsErrors: true
+      outputFormat: prettyError
+  defaults:
+    headers:
+      Content-Type: application/json
+
+scenarios:
+  - name: Saúde da API
+    flow:
+      - get:
+          url: /health
+          expect:
+            - statusCode: 200
+            - jmespath: "service == 'shortbeyond-api' && status == 'healthy'"

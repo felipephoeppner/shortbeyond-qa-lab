@@ -1,0 +1,8 @@
+ShortBeyond QA Lab — Felipe Hoeppner
+
+Este repositório contém automação e material de estudo reorganizado a partir
+do laboratório local do autor. A aplicação ShortBeyond, distribuída por
+beyondtest, não foi desenvolvida neste repositório.
+
+Imagens Docker e dependências npm mantêm suas próprias licenças.
+Consulte docs/references.md e examples/README.md para origem e contexto.

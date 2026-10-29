@@ -1,0 +1,110 @@
+config:
+  target: http://127.0.0.1:3433/api
+  payload:
+    path: ../../data/users.csv
+    fields: [name, email, password]
+  phases:
+    - name: warmup
+      duration: 30
+      arrivalRate: 5
+    - name: ramp-up
+      duration: 20
+      arrivalRate: 5
+      rampTo: 20
+    - name: spike
+      duration: 30
+      arrivalRate: 100
+    - name: drop
+      duration: 10
+      arrivalRate: 100
+      rampTo: 10
+    - name: recovery
+      duration: 10
+      arrivalRate: 5
+  plugins:
+    expect:
+      reportFailuresAsErrors: true
+      outputFormat: prettyError
+  defaults:
+    headers:
+      Content-Type: application/json
+
+scenarios:
+  - name: Criar link
+    weight: 50
+    flow:
+      - post:
+          url: /auth/login
+          json:
+            email: "{{ email }}"
+            password: "{{ password }}"
+          capture:
+            json: "$.data.token"
+            as: authToken
+          expect:
+            - statusCode: 200
+            - hasProperty: data.token
+      - post:
+          url: /links
+          headers:
+            Authorization: "Bearer {{ authToken }}"
+          json:
+            original_url: https://example.com/
+            title: Link do laboratório QA
+          expect:
+            - statusCode: 201
+            - hasProperty: data.short_code
+
+  - name: Listar links
+    weight: 30
+    flow:
+      - post:
+          url: /auth/login
+          json:
+            email: "{{ email }}"
+            password: "{{ password }}"
+          capture:
+            json: "$.data.token"
+            as: authToken
+          expect:
+            - statusCode: 200
+            - hasProperty: data.token
+      - get:
+          url: /links
+          headers:
+            Authorization: "Bearer {{ authToken }}"
+          expect:
+            - statusCode: 200
+            - hasProperty: data
+
+  - name: Fluxo completo
+    weight: 20
+    flow:
+      - post:
+          url: /auth/login
+          json:
+            email: "{{ email }}"
+            password: "{{ password }}"
+          capture:
+            json: "$.data.token"
+            as: authToken
+          expect:
+            - statusCode: 200
+            - hasProperty: data.token
+      - post:
+          url: /links
+          headers:
+            Authorization: "Bearer {{ authToken }}"
+          json:
+            original_url: https://example.com/
+            title: Link do laboratório QA
+          expect:
+            - statusCode: 201
+            - hasProperty: data.short_code
+      - get:
+          url: /links
+          headers:
+            Authorization: "Bearer {{ authToken }}"
+          expect:
+            - statusCode: 200
+            - hasProperty: data

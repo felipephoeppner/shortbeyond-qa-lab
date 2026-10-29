@@ -1,0 +1,31 @@
+config:
+  target: http://127.0.0.1:3433/api
+  payload:
+    path: ../../data/users.csv
+    fields: [name, email, password]
+  phases:
+    - name: login
+      duration: 60
+      arrivalRate: 4
+  plugins:
+    expect:
+      reportFailuresAsErrors: true
+      outputFormat: prettyError
+  defaults:
+    headers:
+      Content-Type: application/json
+
+scenarios:
+  - name: Login com sucesso
+    flow:
+      - post:
+          url: /auth/login
+          json:
+            email: "{{ email }}"
+            password: "{{ password }}"
+          capture:
+            json: "$.data.token"
+            as: authToken
+          expect:
+            - statusCode: 200
+            - hasProperty: data.token
